@@ -9,23 +9,29 @@ var MBOX = require('../emails');
 
 var EmailListContainer = React.createClass({
 	 getInitialState: function() {
-		var mboxname = this.props.params.mailboxname
-		if (!mboxname) {
-			console.log("ERROR: No mailbox name passed.");
-			mboxname = "inbox";
-		}
+		var mboxname = "inbox";
 		var themails = MBOX[mboxname]
-		console.log("themails: ");
-		console.dir(themails);
         return {
-            emails: themails
+            emails: themails,
+            currentmailbox: mboxname
         }
     },
+    componentWillReceiveProps: function(nextProps) {
+    	console.log('received props update', this.props.params.mailboxname);
+		var newboxname = this.props.params.mailboxname	
+		if (newboxname && newboxname !== this.state.currentmailbox) {
+			var themails = MBOX[newboxname]
+			this.setState({
+				emails: themails,
+				currentmailbox: newboxname
+			})
+		}
+  	},
     onMailClick: function() {
 	    console.log("Click iin th container");
 	    console.log("history: ");
 		console.dir(browserHistory);
-		browserHistory.push('#/spam');
+		browserHistory.push('/spam');
 
     },
     render: function() {
