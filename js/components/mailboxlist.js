@@ -17,7 +17,6 @@ var MailboxList = function(props) {
     return (
 	    	<nav id="mailboxes">
 				<div className="inner">
-					<h3>Mailboxes</h3>
 					<ul>
 						{mailboxes}
 					</ul>

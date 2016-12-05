@@ -11,6 +11,7 @@ var hashHistory = router.hashHistory;
 
 var App = require('./components/app');
 var EmailListContainer = require('./components/emaillist-container');
+var EmailContainer = require('./components/email-container');
 
 
 var NoMailboxSelected = function(props) {
@@ -30,7 +31,8 @@ var routes = (
     <Router history={hashHistory}> 
         <Route component={App}>
            <Route path=":mailboxname" component={EmailListContainer} /> 
-           <Route path="/" component={NoMailboxSelected} />
+           <Route path=":mailboxname/:emailid" component={EmailContainer} /> 
+          <Route path="/" component={NoMailboxSelected} />
        </Route>
     </Router>
 ); 

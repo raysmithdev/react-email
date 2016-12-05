@@ -5,7 +5,6 @@ var MailboxList = require('./mailboxlist.js');
 
 var MailboxListContainer = React.createClass({
 	 getInitialState: function() {
-		 console.log("MailboxListContainer: State: selectedMailbox: " + this.props.selectedMailbox);
         return {
             mailboxes: ["inbox", "spam"]
         }

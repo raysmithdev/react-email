@@ -21,7 +21,6 @@ var EmailListContainer = React.createClass({
         }
     },
     componentWillReceiveProps: function(nextProps) {
-    	console.log('received props update', this.props.params.mailboxname);
 		var newboxname = this.props.params.mailboxname	
 		if (newboxname && newboxname !== this.state.currentmailbox) {
 			var themails = MBOX[newboxname]
@@ -31,10 +30,9 @@ var EmailListContainer = React.createClass({
 			})
 		}
   	},
-    onMailClick: function() {
-	    console.log("Click iin th container");
-	    console.log("history: ");
-		this.props.router.push('/spam');
+    onMailClick: function(event) {
+	    var identifier = event.currentTarget.dataset.id;
+		this.props.router.push('/' + this.state.currentmailbox + '/' + identifier);
 
     },
     render: function() {

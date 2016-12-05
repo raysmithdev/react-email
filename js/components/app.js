@@ -4,8 +4,6 @@ var ReactDOM = require('react-dom');
 var MailboxListContainer = require('./mailboxlist-container.js');
 
 var App = function(props) {
-	console.log("APP: Mailbox name: " + props.params.mailboxname + "  :: App props");
-	console.dir(props);
     return (
 	    <div id="all-the-stuff">
 		<header id="mail-header">
