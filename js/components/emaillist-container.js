@@ -1,6 +1,6 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-import {browserHistory} from 'react-router';
+import { withRouter } from 'react-router';
 
 var EmailList = require('./emaillist.js');
 
@@ -10,6 +10,10 @@ var MBOX = require('../emails');
 var EmailListContainer = React.createClass({
 	 getInitialState: function() {
 		var mboxname = "inbox";
+		var newboxname = this.props.params.mailboxname	
+		if (newboxname && newboxname !== mboxname) {
+			mboxname = newboxname
+		}
 		var themails = MBOX[mboxname]
         return {
             emails: themails,
@@ -30,8 +34,7 @@ var EmailListContainer = React.createClass({
     onMailClick: function() {
 	    console.log("Click iin th container");
 	    console.log("history: ");
-		console.dir(browserHistory);
-		browserHistory.push('/spam');
+		this.props.router.push('/spam');
 
     },
     render: function() {

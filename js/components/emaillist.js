@@ -16,7 +16,7 @@ var EmailList = function(props) {
 					<div id="inner">
 						<table>
 							<tbody>
-							<tr><th>from</th><th>to</th><th>title</th></tr>
+							<tr><th>from</th><th>title</th></tr>
 							{emails}
 							</tbody>
 						</table>
@@ -29,7 +29,7 @@ var EmailList = function(props) {
 
 var EmailItem = function (props) {
 	return (
-		<tr onClick={props.onMailClick}><td>{props.from}</td><td>{props.to}</td><td>{props.subject}</td></tr>
+		<tr onClick={props.onMailClick}><td>{props.from}</td><td>{props.subject}</td></tr>
 	);
 }
 
