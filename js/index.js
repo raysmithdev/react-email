@@ -11,11 +11,7 @@ var hashHistory = router.hashHistory;
 
 var App = require('./components/app');
 var EmailListContainer = require('./components/emaillist-container');
-//var EmailList = require('./components/');
-//var EmailHeaderContainer = require('./components/');
-//var EmailHeader = require('./components/');
-//var EmailContainer = require('./components/');
-//var Email = require('./components/');
+
 
 var NoMailboxSelected = function(props) {
 	return (
@@ -26,17 +22,15 @@ var NoMailboxSelected = function(props) {
 					</div>
 				</div>
 			</main>
-
 	)
 }
 
 
 var routes = (
     <Router history={hashHistory}> 
-        <Route path="/" component={App}>
-          <IndexRoute component={NoMailboxSelected} />
-          <Route path="mbox/:mailbox-name" component={EmailListContainer} /> 
-          <Route path="*" component={NoMailboxSelected} />
+        <Route component={App}>
+           <Route path=":mailboxname" component={EmailListContainer} /> 
+           <Route path="/" component={NoMailboxSelected} />
        </Route>
     </Router>
 ); 

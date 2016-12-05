@@ -6,7 +6,7 @@ var EmailList = function(props) {
 	var emails = Object.keys(props.emails).map(function(emailId, index) {
 		var thisemail = props.emails[emailId];
 		return (
-			<EmailItem from={thisemail.from} to={thisemail.to} subject={thisemail.title} key={thisemail.id} />
+			<EmailItem from={thisemail.from} to={thisemail.to} subject={thisemail.title} key={thisemail.id} mailboxname={props.mailboxname} onMailClick={props.onMailClick} />
 		);
 	});
 	
@@ -29,7 +29,7 @@ var EmailList = function(props) {
 
 var EmailItem = function (props) {
 	return (
-		<tr onclick="window.location='#';"><td>{props.from}</td><td>{props.to}</td><td>{props.subject}</td></tr>
+		<tr onClick={props.onMailClick}><td>{props.from}</td><td>{props.to}</td><td>{props.subject}</td></tr>
 	);
 }
 
